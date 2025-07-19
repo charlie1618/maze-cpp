@@ -63,23 +63,12 @@ vector<vector<vector<bool>>> create_maze(int n, int m) {
         }
         else {
             conn[r][c] = true;
+            grid[r][c][dir] = false;
 
-            if(dir == 0) {
-                grid[r][c][0] = false;
-                grid[r - 1][c][1] = false;
-            }
-            else if(dir == 1) {
-                grid[r][c][1] = false;
-                grid[r + 1][c][0] = false;
-            }
-            else if(dir == 2) {
-                grid[r][c][2] = false;
-                grid[r][c - 1][3] = false;
-            }
-            else if(dir == 3) {
-                grid[r][c][3] = false;
-                grid[r][c + 1][2] = false;
-            }
+            if(dir == 0) grid[r - 1][c][1] = false;
+            else if(dir == 1) grid[r + 1][c][0] = false;
+            else if(dir == 2) grid[r][c - 1][3] = false;
+            else if(dir == 3) grid[r][c + 1][2] = false;
 
             walls.erase(walls.begin() + idx);
         }
